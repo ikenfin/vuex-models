@@ -20,7 +20,8 @@ import { genVuexModels } from 'vuex-models'
 
 /*
   First argument is an array of generated field names
-  Second optional argument - state attribute name, where generated fields will be stored their states
+  Second optional argument - state attribute name,
+  where generated fields will be stored their states
 */
 const { mutations, actions, getters, state } = genVuexModels([
   'foo'
