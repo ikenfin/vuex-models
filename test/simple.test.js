@@ -8,7 +8,7 @@ import { genVuexModels, mapVuexModels } from '../src/index'
 
 Vue.use(Vuex)
 
-const { mutations, actions, getters } = genVuexModels([
+const { mutations, actions, getters, state } = genVuexModels([
   'hello'
 ], 'myState');
 
@@ -16,9 +16,7 @@ const store = new Vuex.Store({
   mutations,
   actions,
   getters,
-  state: {
-    myState: {}
-  }
+  state
 });
 
 const fields = mapVuexModels(['hello']);

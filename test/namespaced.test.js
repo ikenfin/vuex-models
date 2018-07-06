@@ -11,7 +11,7 @@ Vue.use(Vuex)
 const NAMESPACE = 'test_namespace'
 const NS = `${NAMESPACE}/Vxm_hello`
 
-const { mutations, actions, getters } = genVuexModels([
+const { mutations, actions, getters, state } = genVuexModels([
   'hello'
 ], 'myState');
 
@@ -22,9 +22,7 @@ const store = new Vuex.Store({
       mutations,
       actions,
       getters,
-      state: {
-        myState: {}
-      }
+      state
     }
   }
 });
