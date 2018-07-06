@@ -16,9 +16,9 @@
     "mocha": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:jest/recommended"],
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 2018,
     "sourceType": "module"
   }
 }

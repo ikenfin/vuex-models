@@ -16,7 +16,9 @@
     "bundle": "NODE_ENV=production rollup -c",
     "dev": "NODE_ENV=develop rollup -c",
     "test": "jest test/**.test.js",
-    "test-coverage": "jest --coverage test/**.test.js"
+    "test:coverage": "jest --coverage test/**.test.js",
+    "lint": "eslint ./src",
+    "lint:tests": "eslint ./test"
   },
   "author": "ikenfin",
   "homepage": "https://github.com/ikenfin/vuex-models",
@@ -35,6 +37,8 @@
     "babel-jest": "^23.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babelrc-rollup": "^3.0.0",
+    "eslint": "^5.0.1",
+    "eslint-plugin-jest": "^21.17.0",
     "jest": "^23.3.0",
     "rollup": "^0.62.0",
     "rollup-plugin-auto-external": "^1.2.0",
