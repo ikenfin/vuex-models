@@ -1,8 +1,14 @@
 {
   "name": "vuex-models",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple two-way data binding between vue components and vuex store",
+  "keywords": [
+    "vue",
+    "vuex",
+    "two-way data binding"
+  ],
   "main": "dist/bundle.esm.js",
+  "module": "dist/bundle.esm.js",
   "files": [
     "dist/*"
   ],
@@ -13,6 +19,7 @@
     "test-coverage": "jest --coverage test/**.test.js"
   },
   "author": "ikenfin",
+  "homepage": "https://github.com/ikenfin/vuex-models",
   "license": "MIT",
   "dependencies": {
     "capitalize": "^1.0.0"
@@ -37,5 +44,9 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "vue": "^2.5.16",
     "vuex": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikenfin/vuex-models"
   }
 }
