@@ -2,6 +2,12 @@
 
 This package is aims to simplify `v-model` usage with your vuex state, by providing `getter/action/mutation/state` generator and mapper, that generates `v-model` compatible computed properties.
 
+## Installation
+
+Just use npm:
+
+`npm i --save vuex-models`
+
 ## Usage
 
 Using vuex-models is a dead simple - first you need to generate store fields like this:
