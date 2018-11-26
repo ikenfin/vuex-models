@@ -38,7 +38,8 @@ const store = new Vuex.Store({
 
 /*
   OLD WAY! Do not use it at new code!
-  Before 1.0.2 state was empty object with namespace, so it was your responsibility to manually create initial state
+  Before 1.0.2 state was empty object with namespace, so it was
+  your responsibility to manually create initial state
 */
 const { mutations, actions, getters, state } = genVuexModels([
   'foo'
