@@ -7,6 +7,7 @@
 
 import Vue from 'vue';
 import capitalize from 'capitalize';
+import isPlainObject from 'is-plain-object';
 
 import {
   toMutationName,
@@ -31,6 +32,7 @@ const genVuexModels = (fields, storeAttr = null) => {
     mutations: {},
     state: {}
   }
+  const setDefaultValue = isPlainObject(fields)
 
   if (storeAttr !== false) {
     if (!storeAttr) {
@@ -39,15 +41,23 @@ const genVuexModels = (fields, storeAttr = null) => {
     result.state[storeAttr] = {}
   }
 
-  fields.reduce(function (prev, field) {
-    prev.getters[`${PREFIX}_${field}`] = function (state) {
-      return storeAttr !== false ? state[storeAttr][field] : state[field]
+  normalizeMap(fields).reduce(function (prev, { key, val }) {
+    if (setDefaultValue) {
+      if (storeAttr) {
+        result.state[storeAttr][key] = val
+      }
+      else {
+        result.state[key] = val
+      }
     }
-    prev.actions[`set${PREFIX}_${capitalize(field)}`] = function ({ commit }, data) {
-      commit(toMutationName(`${PREFIX}_${field}`), data)
+    prev.getters[`${PREFIX}_${key}`] = function (state) {
+      return storeAttr !== false ? state[storeAttr][key] : state[key]
     }
-    prev.mutations[toMutationName(`${PREFIX}_${field}`)] = function (state, value) {
-      storeAttr !== false ? Vue.set(state[storeAttr], field, value) : Vue.set(state, field, value)
+    prev.actions[`set${PREFIX}_${capitalize(key)}`] = function ({ commit }, data) {
+      commit(toMutationName(`${PREFIX}_${key}`), data)
+    }
+    prev.mutations[toMutationName(`${PREFIX}_${key}`)] = function (state, value) {
+      storeAttr !== false ? Vue.set(state[storeAttr], key, value) : Vue.set(state, key, value)
     }
 
     return prev
