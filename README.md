@@ -22,12 +22,29 @@ import { genVuexModels } from 'vuex-models'
   First argument is an array of generated field names
   Second optional argument - state attribute name,
   where generated fields will be stored their states
+  ===
+    From 1.0.2 added handy support to create models with initial state.
+    Just use `genVuexModels` with object instead array, as follow:
+  ===
+*/
+// models with initial state values
+const models = genVuexModels({
+  foo: 'bar'
+}, 'baz')
+
+const store = new Vuex.Store({
+  ...models
+});
+
+/*
+  OLD WAY! Do not use it at new code!
+  Before 1.0.2 state was empty object with namespace, so it was your responsibility to manually create initial state
 */
 const { mutations, actions, getters, state } = genVuexModels([
   'foo'
 ], 'bar');
 
-const store = new Vuex.Store({
+const oldWayStore = new Vuex.Store({
   mutations,
   actions,
   getters,
