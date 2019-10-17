@@ -2,7 +2,7 @@
 import babel from 'rollup-plugin-babel';
 import babelrc from 'babelrc-rollup';
 import commonjs from 'rollup-plugin-commonjs';
-import eslint from 'rollup-plugin-eslint';
+import { eslint } from 'rollup-plugin-eslint';
 import autoExternal from 'rollup-plugin-auto-external';
 
 export default {
@@ -21,5 +21,8 @@ export default {
     babel(babelrc({
       addExternalHelpersPlugin: false
     }))
+  ],
+  external: [
+    'vue'
   ]
 };
