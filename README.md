@@ -22,35 +22,28 @@ import { genVuexModels } from 'vuex-models'
   First argument is an array of generated field names
   Second optional argument - state attribute name,
   where generated fields will be stored their states
-  ===
-    From 1.0.2 added handy support to create models with initial state.
-    Just use `genVuexModels` with object instead array, as follow:
-  ===
 */
 // models with initial state values
+
 const models = genVuexModels({
-  foo: 'bar'
-}, 'baz')
+  foo: 'defaultValueForFoo',
+  bar: 'defaultValueForBar'
+}, 'customField') // By default: Vxm
 
 const store = new Vuex.Store({
   ...models
 });
 
 /*
-  OLD WAY! Do not use it at new code!
-  Before 1.0.2 state was empty object with namespace, so it was
-  your responsibility to manually create initial state
-*/
-const { mutations, actions, getters, state } = genVuexModels([
-  'foo'
-], 'bar');
+  Vuex state becomes to:
 
-const oldWayStore = new Vuex.Store({
-  mutations,
-  actions,
-  getters,
-  state
-});
+  {
+    customField: {
+      foo: 'defaultValueForFoo',
+      bar: 'defaultValueForBar'
+    }
+  }
+*/
 
 export default store
 ```
@@ -72,7 +65,8 @@ export default {
       so, from now, you can safely use `foo` in v-model directives
     */
     ...mapVuexModels([
-      'foo'
+      'foo',
+      'bar'
     ])
   }
 }
@@ -84,7 +78,18 @@ Also you can use `vuex-models` for namespaced vuex modules. All you need is to p
 
 ```js
 // for example we have store module namespaced with 'MyNamespacedModule'
-
+/*
+const store = new Vuex.Store({
+  modules: {
+    MyNamespacedModule: {
+      namespaced: true,
+      ...genVuexModels({
+        foo: 'value'
+      })
+    }
+  }
+})
+*/
 export default {
   computed: {
     ...mapVuexModels([
@@ -101,9 +106,9 @@ Like vuex mappers, mapVuexModels supports properties renaming:
 ```js
 export default {
   computed: {
-    // this.bar responds to store.foo model
+    // this.myFoo responds to store.foo model
     ...mapVuexModels({
-      'bar': 'foo'
+      'myFoo': 'foo'
     })
   }
 }
