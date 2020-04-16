@@ -7,13 +7,11 @@ import autoExternal from 'rollup-plugin-auto-external';
 
 export default {
   input: 'src/index.js',
-  output: [
-    {
-      file: 'dist/bundle.esm.js',
-      format: 'es',
-      sourceMap: true
-    }
-  ],
+  output: {
+    file: 'dist/bundle.esm.js',
+    format: 'es',
+    sourcemap: true
+  },
   plugins: [
     autoExternal(),
     commonjs(),
