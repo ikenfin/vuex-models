@@ -5,7 +5,8 @@
 import {
   toMutationName,
   normalizeNamespace,
-  normalizeMap
+  normalizeMap,
+  capitalize
 } from '../src/lib/utils'
 
 test('toMutationName function tests', () => {
@@ -80,5 +81,20 @@ test('normalizeMap function test', () => {
   normalizedMap.forEach((item, index) => {
     expect(item.key).toEqual(Object.keys(map)[index])
     expect(item.val).toEqual(Object.values(map)[index])
+  })
+})
+
+test('capitalize function test', () => {
+  const validPairs = {
+    'hello world': 'Hello world',
+    'only_space_used_as_delimiter': 'Only_space_used_as_delimiter',
+    'UPPERCASED WORDS': 'Uppercased words',
+    '_underscoreTest': '_underscoretest',
+    '1st': '1st',
+    '1st and other': '1st and other'
+  }
+
+  Object.entries(validPairs).forEach(([value, expectedValue]) => {
+    expect(capitalize(value)).toEqual(expectedValue)
   })
 })
