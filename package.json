@@ -24,7 +24,6 @@
   "homepage": "https://github.com/ikenfin/vuex-models",
   "license": "MIT",
   "dependencies": {
-    "capitalize": "^2.0.3",
     "is-plain-object": "^3.0.0"
   },
   "devDependencies": {

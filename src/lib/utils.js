@@ -34,8 +34,24 @@ const toMutationName = (name) => {
   return parts.join('_').toUpperCase()
 }
 
+/*
+  Capitalize single word
+*/
+const capitalizeWord = (word) =>
+  `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
+
+/*
+  Capitalize all words in inputString
+*/
+const capitalize = (inputString) =>
+  inputString
+    .split(' ')
+    .map(capitalizeWord)
+    .join(' ');
+
 export {
   toMutationName,
   normalizeNamespace,
-  normalizeMap
+  normalizeMap,
+  capitalize
 }

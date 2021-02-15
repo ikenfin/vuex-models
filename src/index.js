@@ -6,13 +6,13 @@
 */
 
 import Vue from 'vue';
-import capitalize from 'capitalize';
 import isPlainObject from 'is-plain-object';
 
 import {
   toMutationName,
   normalizeMap,
-  normalizeNamespace
+  normalizeNamespace,
+  capitalize
 } from './lib/utils';
 
 /*
