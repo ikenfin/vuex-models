@@ -35,19 +35,10 @@ const toMutationName = (name) => {
 }
 
 /*
-  Capitalize single word
-*/
-const capitalizeWord = (word) =>
-  `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
-
-/*
-  Capitalize all words in inputString
+  Capitalize inputString
 */
 const capitalize = (inputString) =>
-  inputString
-    .split(' ')
-    .map(capitalizeWord)
-    .join(' ');
+  `${inputString.charAt(0).toUpperCase()}${inputString.slice(1).toLowerCase()}`
 
 export {
   toMutationName,
