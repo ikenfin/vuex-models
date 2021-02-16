@@ -6,7 +6,6 @@
 */
 
 import Vue from 'vue';
-import isPlainObject from 'is-plain-object';
 
 import {
   toMutationName,
@@ -32,7 +31,15 @@ const genVuexModels = (fields, storeAttr = null) => {
     mutations: {},
     state: {}
   }
-  const setDefaultValue = isPlainObject(fields)
+
+  // early exit on falsy fields argument
+  // using naive checkers here
+  if (!Array.isArray(fields) && Object.prototype.toString.call(fields) !== '[object Object]') {
+    throw new Error('genVuexModels: incorrect [fields] argument. Pass models array or configuration object as first argument! Passed: ', JSON.stringify(fields))
+  }
+
+  // we expect that if we got non-array value - then it's object
+  const setDefaultValue = !Array.isArray(fields)
 
   if (storeAttr !== false) {
     if (!storeAttr) {
