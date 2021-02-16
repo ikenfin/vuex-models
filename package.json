@@ -23,9 +23,7 @@
   "author": "ikenfin",
   "homepage": "https://github.com/ikenfin/vuex-models",
   "license": "MIT",
-  "dependencies": {
-    "is-plain-object": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-external-helpers": "^7.8.3",
