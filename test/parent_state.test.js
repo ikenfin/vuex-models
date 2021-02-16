@@ -4,7 +4,7 @@ import { genVuexModels, mapVuexModels } from '../src/index'
 
 Vue.use(Vuex)
 
-const fields = genVuexModels(['myVariable'], false)
+const fields = genVuexModels([ 'myVariable' ], false)
 
 const store = new Vuex.Store({
   modules: {
@@ -28,7 +28,7 @@ const store = new Vuex.Store({
 const app = new Vue({
   store,
   computed: {
-    ...mapVuexModels(['myVariable'], 'test_no_state')
+    ...mapVuexModels([ 'myVariable' ], 'test_no_state')
   }
 })
 
@@ -36,5 +36,7 @@ test('parent state usage tests', () => {
   expect(app.myVariable).toEqual('initial value')
   app.myVariable = 'something another'
   expect(app.myVariable).toEqual('something another')
-  expect(store.getters['test_no_state/Vxm_myVariable']).toEqual('something another')
+  expect(store.getters['test_no_state/Vxm_myVariable']).toEqual(
+    'something another'
+  )
 })

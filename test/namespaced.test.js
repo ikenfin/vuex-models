@@ -11,9 +11,10 @@ Vue.use(Vuex)
 const NAMESPACE = 'test_namespace'
 const NS = `${NAMESPACE}/Vxm_hello`
 
-const { mutations, actions, getters, state } = genVuexModels([
-  'hello'
-], 'myState');
+const { mutations, actions, getters, state } = genVuexModels(
+  [ 'hello' ],
+  'myState'
+)
 
 const store = new Vuex.Store({
   modules: {
@@ -25,12 +26,12 @@ const store = new Vuex.Store({
       state
     }
   }
-});
+})
 
-const fields = mapVuexModels(['hello'], NAMESPACE);
+const fields = mapVuexModels([ 'hello' ], NAMESPACE)
 
-const mappedState = Vuex.mapState(NAMESPACE, ['myState']);
-const mappedAction = Vuex.mapActions(NAMESPACE, ['setVxm_Hello']);
+const mappedState = Vuex.mapState(NAMESPACE, [ 'myState' ])
+const mappedAction = Vuex.mapActions(NAMESPACE, [ 'setVxm_Hello' ])
 
 const app = new Vue({
   store,
@@ -41,7 +42,7 @@ const app = new Vue({
   methods: {
     mappedAction: mappedAction.setVxm_Hello
   }
-});
+})
 
 const checkHelloState = (value) => {
   expect(store.getters[NS]).toBe(value)

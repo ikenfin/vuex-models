@@ -8,25 +8,26 @@ import { genVuexModels, mapVuexModels } from '../src/index'
 
 Vue.use(Vuex)
 
-const { mutations, actions, getters, state } = genVuexModels([
-  'hello'
-], 'myState');
+const { mutations, actions, getters, state } = genVuexModels(
+  [ 'hello' ],
+  'myState'
+)
 
 const store = new Vuex.Store({
   mutations,
   actions,
   getters,
   state
-});
+})
 
-const fields = mapVuexModels(['hello']);
+const fields = mapVuexModels([ 'hello' ])
 
 const app = new Vue({
   store,
   computed: {
     ...fields
   }
-});
+})
 
 const checkHelloState = (value) => {
   expect(store.getters.Vxm_hello).toBe(value)
@@ -35,13 +36,16 @@ const checkHelloState = (value) => {
 }
 
 test('state field usage tests', () => {
-  const modelsWithoutStateVar = genVuexModels(['withoutStateVar'])
+  const modelsWithoutStateVar = genVuexModels([ 'withoutStateVar' ])
   expect(modelsWithoutStateVar.state.Vxm).toBeDefined()
 
-  const modelsWithCustomStateVar = genVuexModels(['withStateVar'], 'stateVar')
+  const modelsWithCustomStateVar = genVuexModels([ 'withStateVar' ], 'stateVar')
   expect(modelsWithCustomStateVar.state.stateVar).toBeDefined()
 
-  const modelsWithoutOwnState = genVuexModels(['alreadyDefinedStateVariable'], false)
+  const modelsWithoutOwnState = genVuexModels(
+    [ 'alreadyDefinedStateVariable' ],
+    false
+  )
   expect(modelsWithoutOwnState.state).toMatchObject({})
 })
 

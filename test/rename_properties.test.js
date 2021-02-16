@@ -1,13 +1,10 @@
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { genVuexModels, mapVuexModels } from '../src/index'
 
 Vue.use(Vuex)
 
-const { mutations, actions, getters } = genVuexModels([
-  'hello'
-], 'myState');
+const { mutations, actions, getters } = genVuexModels([ 'hello' ], 'myState')
 
 const store = new Vuex.Store({
   mutations,
@@ -16,11 +13,11 @@ const store = new Vuex.Store({
   state: {
     myState: {}
   }
-});
+})
 
 const fields = mapVuexModels({
-  'world': 'hello'
-});
+  world: 'hello'
+})
 
 const app = new Vue({
   store,
@@ -30,7 +27,7 @@ const app = new Vue({
   created () {
     this.world = 'is it works?'
   }
-});
+})
 
 test('has property `world`', () => {
   expect(app.world).toEqual('is it works?')

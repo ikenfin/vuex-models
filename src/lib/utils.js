@@ -8,11 +8,11 @@ const normalizeNamespace = (namespace = '') => {
 
   if (namespace.length > 0) {
     if (namespace.charAt(namespace.length - 1) !== '/') {
-      namespace += '/';
+      namespace += '/'
     }
   }
 
-  return namespace;
+  return namespace
 }
 
 /*
@@ -21,8 +21,12 @@ const normalizeNamespace = (namespace = '') => {
 */
 const normalizeMap = (map) => {
   return Array.isArray(map)
-    ? map.map(function (key) { return ({ key: key, val: key }) })
-    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }) })
+    ? map.map(function (key) {
+      return { key: key, val: key }
+    })
+    : Object.keys(map).map(function (key) {
+      return { key: key, val: map[key] }
+    })
 }
 
 /*
@@ -40,9 +44,4 @@ const toMutationName = (name) => {
 const capitalize = (inputString) =>
   `${inputString.charAt(0).toUpperCase()}${inputString.slice(1).toLowerCase()}`
 
-export {
-  toMutationName,
-  normalizeNamespace,
-  normalizeMap,
-  capitalize
-}
+export { toMutationName, normalizeNamespace, normalizeMap, capitalize }
