@@ -51,16 +51,19 @@ test('has hello getter/action/mutation', () => {
   expect(mutations.VXM__HELLO).toBeDefined()
 })
 
+// eslint-disable-next-line jest/expect-expect
 test('use dispatch', () => {
   app.$store.dispatch('setVxm_Hello', 'dispatched')
   checkHelloState('dispatched')
 })
 
+// eslint-disable-next-line jest/expect-expect
 test('use model setter', () => {
   app.hello = 'setter'
   checkHelloState('setter')
 })
 
+// eslint-disable-next-line jest/expect-expect
 test('use mutation', () => {
   app.$store.commit('VXM__HELLO', 'mutated')
   checkHelloState('mutated')
