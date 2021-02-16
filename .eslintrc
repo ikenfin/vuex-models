@@ -1,15 +1,28 @@
 {
   "rules": {
-    "quotes": [ 2, "single", { "allowTemplateLiterals": true } ],
-    "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
-    "keyword-spacing": [ 2, { "before": true, "after": true } ],
-    "space-before-blocks": [ 2, "always" ],
-    "space-before-function-paren": [ 2, "always" ],
-    "no-cond-assign": [ 0 ],
-    "no-unused-vars": [ 2 ],
-    "no-var": [ 2 ],
-    "prefer-const": [ 2 ],
-    "no-console": [ 0 ]
+    "quotes": [ "warn", "single", { "allowTemplateLiterals": true } ],
+    "brace-style": ["warn", "stroustrup", { "allowSingleLine": true }],
+    "keyword-spacing": [ "warn", { "before": true, "after": true } ],
+    "space-before-blocks": [ "warn", "always" ],
+    "space-before-function-paren": [ "warn", "always" ],
+    "no-cond-assign": [ "error", "always" ],
+    "no-unused-vars": [ "error" ],
+    "no-var": [ "error" ],
+    "semi": [ "error", "never" ],
+    "comma-dangle": [ "error", "never" ],
+    "prefer-const": [ "error" ],
+    "no-console": [ "error" ],
+    "indent": [
+      "warn",
+      2
+    ],
+    "array-bracket-spacing": [
+      "warn",
+      "always",
+      {
+        "arraysInArrays": true
+      }
+    ]
   },
   "env": {
     "es6": true,
