@@ -58,14 +58,35 @@ const checkStateValue = (field, val) => {
   expect(app[field]).toEqual(val);
 }
 
+test('test how genVuexModels throws error with incorrect args', () => {
+  expect(() => genVuexModels()).toThrow()
+  expect(() => genVuexModels(null)).toThrow()
+  expect(() => genVuexModels(true)).toThrow()
+})
+
+test('test how genVuexModels works with empty array/object args', () => {
+  const checkFieldsIsEmpty = ['actions', 'mutations', 'state', 'getters']
+
+  const emptyArrayArgsGenCalled = genVuexModels([])
+  const emptyObjectArgsGenCalled = genVuexModels({})
+
+  checkFieldsIsEmpty.forEach((field) => {
+    expect(emptyArrayArgsGenCalled[field]).toMatchObject({})
+    expect(emptyObjectArgsGenCalled[field]).toMatchObject({})
+  })
+})
+
+// eslint-disable-next-line jest/expect-expect
 test('state has default value', () => {
   checkStateValue('hello', testDefaultValue);
 });
 
+// eslint-disable-next-line jest/expect-expect
 test('state has default object as value', () => {
   checkStateValue('look_ma_its_an_object', testDefaultObject);
 });
 
+// eslint-disable-next-line jest/expect-expect
 test('default state change using dispatch', () => {
   app.$store.dispatch(`${NAMESPACE}/setVxm_Hello`, 'dispatched');
   checkStateValue('hello', 'dispatched');
@@ -74,6 +95,7 @@ test('default state change using dispatch', () => {
   checkStateValue('look_ma_its_an_object', testAnotherDefaultObject);
 });
 
+// eslint-disable-next-line jest/expect-expect
 test('default state change using model setter', () => {
   app.hello = 'setter';
   checkStateValue('hello', 'setter');
@@ -82,6 +104,7 @@ test('default state change using model setter', () => {
   checkStateValue('look_ma_its_an_object', testAnotherDefaultObject);
 });
 
+// eslint-disable-next-line jest/expect-expect
 test('default state change using mutation', () => {
   app.$store.commit(`${NAMESPACE}/VXM__HELLO`, 'mutated')
   checkStateValue('hello', 'mutated');
