@@ -1,6 +1,6 @@
 {
   "name": "vuex-models",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple two-way data binding between vue components and vuex store",
   "keywords": [
     "vue",
