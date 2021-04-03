@@ -1,5 +1,7 @@
 # vuex-models
 
+[![Support Richard M. Stallman](https://raw.githubusercontent.com/rms-support-letter/rms-support-letter.github.io/master/assets/badge-64-w-border.png)](https://rms-support-letter.github.io/)
+
 This package is aims to simplify `v-model` usage with your vuex state, by providing `getter/action/mutation/state` generator and mapper, that generates `v-model` compatible computed properties.
 
 ## Installation
