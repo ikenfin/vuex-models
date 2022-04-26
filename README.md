@@ -1,8 +1,8 @@
 # vuex-models
 
-[![Support Richard M. Stallman](https://raw.githubusercontent.com/rms-support-letter/rms-support-letter.github.io/master/assets/badge-64-w-border.png)](https://rms-support-letter.github.io/)
-
 This package is aims to simplify `v-model` usage with your vuex state, by providing `getter/action/mutation/state` generator and mapper, that generates `v-model` compatible computed properties.
+
+It is compatible with Vue 2.x
 
 ## Installation
 
@@ -16,7 +16,7 @@ Using vuex-models is a dead simple - first you need to generate store fields lik
 
 ```js
 // your imports
-import { genVuexModels } from 'vuex-models'
+import { genVuexModels } from "vuex-models";
 
 // Vue.use(Vuex), etc
 
@@ -27,13 +27,16 @@ import { genVuexModels } from 'vuex-models'
 */
 // models with initial state values
 
-const models = genVuexModels({
-  foo: 'defaultValueForFoo',
-  bar: 'defaultValueForBar'
-}, 'customField') // By default: Vxm
+const models = genVuexModels(
+  {
+    foo: "defaultValueForFoo",
+    bar: "defaultValueForBar",
+  },
+  "customField"
+); // By default: Vxm
 
 const store = new Vuex.Store({
-  ...models
+  ...models,
 });
 
 /*
@@ -47,13 +50,13 @@ const store = new Vuex.Store({
   }
 */
 
-export default store
+export default store;
 ```
 
 Then, in your vue components you can map computed properties by using `mapVuexModels`:
 
 ```js
-import { mapVuexModels } from 'vuex-models'
+import { mapVuexModels } from "vuex-models";
 
 export default {
   computed: {
@@ -66,12 +69,9 @@ export default {
 
       so, from now, you can safely use `foo` in v-model directives
     */
-    ...mapVuexModels([
-      'foo',
-      'bar'
-    ])
-  }
-}
+    ...mapVuexModels(["foo", "bar"]),
+  },
+};
 ```
 
 ## Vuex namespaced stores
@@ -94,11 +94,9 @@ const store = new Vuex.Store({
 */
 export default {
   computed: {
-    ...mapVuexModels([
-      'foo'
-    ], 'MyNamespacedModule')
-  }
-}
+    ...mapVuexModels(["foo"], "MyNamespacedModule"),
+  },
+};
 ```
 
 ## Rename computed properties
@@ -110,8 +108,8 @@ export default {
   computed: {
     // this.myFoo responds to store.foo model
     ...mapVuexModels({
-      'myFoo': 'foo'
-    })
-  }
-}
+      myFoo: "foo",
+    }),
+  },
+};
 ```
